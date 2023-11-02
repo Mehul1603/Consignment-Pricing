@@ -12,7 +12,7 @@ class PredictionOut(BaseModel):
 def home():
     return {"health_check": "OK", "model_version": model_version}
 
-@app.post("/predict")
+@app.post("/predict", response_model = PredictionOut)
 def predict(item_value, item_quantity, weight, item_insurance):
     output = predict_data(item_value, item_quantity, weight, item_insurance)
     return {"output": output}
