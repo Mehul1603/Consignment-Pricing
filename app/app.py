@@ -28,6 +28,7 @@ def getvalue():
     line_item_insurance = float(request.form['line_item_insurance_(usd)'])
     days_to_process = int(request.form['days_to_process'])
     prediction = predict_data(np.array([po_so, asn_dn, country, fulfill_via, vendor_inco_term, sub_classification, unit_of_measure, line_item_quantity, pack_price, unit_price, first_line_designation, freight_cost, shipment_mode, line_item_insurance, days_to_process]))
+    prediction = round(prediction, 2)
     return render_template("index.html", response = prediction)
 
 if __name__ == "__main__":
